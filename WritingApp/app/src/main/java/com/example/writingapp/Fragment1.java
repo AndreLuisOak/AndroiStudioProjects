@@ -1,12 +1,19 @@
 package com.example.writingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,10 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Fragment1 extends Fragment {
+
+    private RecyclerView recyclerView;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private List<String> notas;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,9 +67,26 @@ public class Fragment1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView( LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_1, container, false);
+        View view = inflater.inflate(R.layout.fragment_1, container, false);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        notas = new ArrayList<>(Arrays.asList("Nota 1"));
+        recyclerViewAdapter = new RecyclerViewAdapter(notas);
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+        View nota_text = view.findViewById(R.id.nota_text);
+        nota_text.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Fragment1.this, NotePage.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+
     }
 }
