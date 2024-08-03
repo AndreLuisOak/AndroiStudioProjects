@@ -12,14 +12,17 @@ public class itemAdd {
     }
 
     public String getNome() {
+
         return nome;
     }
 
     public String getCurso() {
+
         return curso;
     }
 
     public int getIdade() {
+
         return idade;
     }
 }
