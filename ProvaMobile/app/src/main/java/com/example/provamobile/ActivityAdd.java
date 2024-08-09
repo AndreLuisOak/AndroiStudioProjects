@@ -35,7 +35,7 @@ public class ActivityAdd extends AppCompatActivity {
         String titulo = novaTarefa.getText().toString();
         String descricao = novaDescricao.getText().toString();
 
-        AppDatabase appDatabase = Room.databaseBuilder(this, AppDatabase.class, "db_pessoas")
+        AppDatabase appDatabase = Room.databaseBuilder(this, AppDatabase.class, "itensDatabase")
                 .enableMultiInstanceInvalidation()
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()

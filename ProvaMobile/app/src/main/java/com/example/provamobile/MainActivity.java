@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         r_view = findViewById(R.id.R_view);
 
-        itemAdapter itemAdapter = new itemAdapter(R.layout.activity_main, itensDatabase);
+        itemAdapter itemAdapter = new itemAdapter(R.layout.activity_main, "itensDatabase");
         r_view.setAdapter(itemAdapter);
         r_view.setLayoutManager(new LinearLayoutManager(this));
 
