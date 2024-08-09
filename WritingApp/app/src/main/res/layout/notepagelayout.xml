@@ -2,27 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
-        android:id="@+id/et_title"
-        android:layout_width="377dp"
-        android:layout_height="52dp"
+        android:id="@+id/titulo_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"
+        android:text="Título..."
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:editable="false"
+        app:layout_constraintBottom_toTopOf="@+id/sinopse_tv"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        android:text="Título...">
-    </EditText>
+        tools:text="Título do Livro" />
 
     <EditText
-        android:id="@+id/et_content"
-        android:layout_width="match_parent"
+        android:id="@+id/sinopse_tv"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="85dp"
-        tools:ignore="MissingConstraints"></EditText>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Sinopse..."
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:editable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_tv"
+        tools:text="Sinopse do Livro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

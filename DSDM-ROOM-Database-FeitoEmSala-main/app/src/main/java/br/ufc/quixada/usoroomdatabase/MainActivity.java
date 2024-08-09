@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         swipeToDelete();
 
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab  = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

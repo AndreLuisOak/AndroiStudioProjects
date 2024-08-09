@@ -8,15 +8,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class NotePage extends AppCompatActivity {
 
-    private EditText et_title;
-    private EditText et_content;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notepagelayout);
 
-        et_title = findViewById(R.id.et_title);
-        et_content = findViewById(R.id.et_content);
+        String titulo = getIntent().getStringExtra("titulo");
+        String sinopse = getIntent().getStringExtra("sinopse");
+
+        EditText titulo_et = findViewById(R.id.titulo_tv);
+        EditText sinopse_et = findViewById(R.id.sinopse_tv);
+
+        titulo_et.setText(titulo);
+        sinopse_et.setText(sinopse);
     }
 }
