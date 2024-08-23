@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
+    <TextView
         android:id="@+id/titulo_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:editable="false"
         android:focusable="false"
+        android:textSize="22dp"
         android:focusableInTouchMode="false"
-        android:text="Título..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:text="Título do Livro" />
+        tools:hint="Título do Livro" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

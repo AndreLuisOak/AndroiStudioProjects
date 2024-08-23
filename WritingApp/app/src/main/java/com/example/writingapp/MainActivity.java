@@ -15,12 +15,11 @@ public class MainActivity extends AppCompatActivity {
     MyViewPagerAdapter myAdapter;
     TabLayout tabLayout;
 
-    String[] menu = {"Fragment1", "Fragment2", "Fragment3"};
+    String[] menu = {"Livros", "Mundos", "Notas"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         tabLayout = findViewById(R.id.tablayout);

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,19 +34,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Livro livro = livros.get(position);
-        holder.titulo_tv.setText(livro.titulo);
-        holder.sinopse_tv.setText(livro.sinopse);
+        holder.tituloTv.setText(livro.titulo);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, NotePage.class);
-                intent.putExtra("titulo", livro.titulo);
-                intent.putExtra("sinopse", livro.sinopse);
-                context.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, NotePage.class);
+            intent.putExtra("titulo", livro.titulo);
+            intent.putExtra("autor", livro.autor);
+            intent.putExtra("sinopse", livro.sinopse);
+            context.startActivity(intent);
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -53,13 +52,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public EditText titulo_tv;
-        public EditText sinopse_tv;
+        public TextView tituloTv;
 
         public ViewHolder(View view) {
             super(view);
-            titulo_tv = view.findViewById(R.id.titulo_tv);
-            sinopse_tv = view.findViewById(R.id.sinopse_tv);
+            tituloTv = view.findViewById(R.id.titulo_tv);
         }
     }
 }

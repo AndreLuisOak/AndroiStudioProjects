@@ -1,6 +1,8 @@
 package com.example.writingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
@@ -13,13 +15,33 @@ public class NotePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notepagelayout);
 
-        String titulo = getIntent().getStringExtra("titulo");
-        String sinopse = getIntent().getStringExtra("sinopse");
+        EditText tituloEt = findViewById(R.id.titulo_et);
+        EditText autorEt = findViewById(R.id.autor_et);
+        EditText sinopseEt = findViewById(R.id.sinopse_et);
+        Button btnSalvar = findViewById(R.id.btn_salvar);
 
-        EditText titulo_et = findViewById(R.id.titulo_tv);
-        EditText sinopse_et = findViewById(R.id.sinopse_tv);
+        btnSalvar.setOnClickListener(v -> {
+            String titulo = tituloEt.getText().toString();
+            String autor = autorEt.getText().toString();
+            String sinopse = sinopseEt.getText().toString();
 
-        titulo_et.setText(titulo);
-        sinopse_et.setText(sinopse);
+            Intent intent = new Intent();
+            intent.putExtra("titulo", titulo);
+            intent.putExtra("autor", autor);
+            intent.putExtra("sinopse", sinopse);
+            setResult(RESULT_OK, intent);
+            finish();
+        });
+
+        Intent intent = getIntent();
+        String titulo = intent.getStringExtra("titulo");
+        String autor = intent.getStringExtra("autor");
+        String sinopse = intent.getStringExtra("sinopse");
+
+        // Setar os dados nos campos
+        tituloEt.setText(titulo);
+        autorEt.setText(autor);
+        sinopseEt.setText(sinopse);
     }
+
 }
