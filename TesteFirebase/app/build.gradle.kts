@@ -1,13 +1,16 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.writingapp"
+    namespace = "com.example.testefirebase"
     compileSdk = 34
 
+    buildFeatures { dataBinding = true }
+
     defaultConfig {
-        applicationId = "com.example.writingapp"
+        applicationId = "com.example.testefirebase"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
@@ -37,14 +40,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.room.common)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
     implementation("com.google.firebase:firebase-database")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")

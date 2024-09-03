@@ -38,7 +38,6 @@ public class NotePage extends AppCompatActivity {
         String autor = intent.getStringExtra("autor");
         String sinopse = intent.getStringExtra("sinopse");
 
-        // Setar os dados nos campos
         tituloEt.setText(titulo);
         autorEt.setText(autor);
         sinopseEt.setText(sinopse);

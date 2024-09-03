@@ -38,8 +38,8 @@ public class Fragment3 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppDatabaseNote db = AppDatabaseNote.getInstance(getContext()); // Usando AppDatabaseNote
-        notaDao = db.notaDao(); // Inicializa o DAO
+        AppDatabaseNote db = AppDatabaseNote.getInstance(getContext());
+        notaDao = db.notaDao();
     }
 
     @Override
@@ -49,10 +49,8 @@ public class Fragment3 extends Fragment {
         recyclerView = view.findViewById(R.id.rViewNotes);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Operação de leitura do banco de dados em thread de background
         executorService.execute(() -> {
             notas = new ArrayList<>(notaDao.getAllNotas());
-            // Atualiza a UI thread
             getActivity().runOnUiThread(() -> {
                 notaAdapter = new NotaAdapter(notas, notaDao);
                 recyclerView.setAdapter(notaAdapter);
@@ -61,12 +59,10 @@ public class Fragment3 extends Fragment {
 
         FloatingActionButton fabAddNote = view.findViewById(R.id.fab_add_note);
         fabAddNote.setOnClickListener(v -> {
-            Nota novaNota = new Nota("");  // Nota vazia para ser editada
+            Nota novaNota = new Nota("");
             notas.add(novaNota);
-            // Inserção da nova nota em thread de background
             executorService.execute(() -> {
-                notaDao.insertAll(novaNota); // Correção: insere nova nota no banco de dados
-                // Atualiza a UI thread
+                notaDao.insertAll(novaNota);
                 getActivity().runOnUiThread(() -> {
                     notaAdapter.notifyItemInserted(notas.size() - 1);
                 });
@@ -79,6 +75,6 @@ public class Fragment3 extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        executorService.shutdown(); // Libera recursos do executor quando o fragmento é destruído
+        executorService.shutdown();
     }
 }

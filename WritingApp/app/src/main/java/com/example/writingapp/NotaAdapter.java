@@ -42,7 +42,6 @@ public class NotaAdapter extends RecyclerView.Adapter<NotaAdapter.ViewHolder> {
         holder.eTextNote.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                // Pode-se salvar a versão anterior para desfazer, se necessário
             }
 
             @Override
@@ -52,7 +51,7 @@ public class NotaAdapter extends RecyclerView.Adapter<NotaAdapter.ViewHolder> {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                new Thread(() -> notaDao.updateNota(nota)).start(); // Correção: Nome do método é 'updateNota'
+                new Thread(() -> notaDao.updateNota(nota)).start();
             }
         });
     }
@@ -67,7 +66,7 @@ public class NotaAdapter extends RecyclerView.Adapter<NotaAdapter.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            eTextNote = view.findViewById(R.id.et_Note); // Certifique-se que este ID está correto no XML
+            eTextNote = view.findViewById(R.id.et_Note);
         }
     }
 }
